@@ -6,8 +6,8 @@ import { CharacterList } from "../components";
 import { getSWChars } from '../actions/index'
 
 class CharacterListView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
@@ -30,11 +30,12 @@ class CharacterListView extends React.Component {
 
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-const mapStateToProps = state => {
+const mstp = (state) => {
+  console.log(state);
   return {
     characters: state.charsReducer.characters,
     fetching: state.charsReducer.fetching
   };
 };
 
-export default connect(mapStateToProps, { getSWChars })(CharacterListView);
+export default connect(mstp, { getSWChars: getSWChars })(CharacterListView);
